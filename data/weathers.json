@@ -1,0 +1,10 @@
+{
+  "weather": {
+    "rain": {
+      "effect": "Boosts water-type moves and weakens fire-type moves."
+    },
+    "sunny": {
+      "effect": "Boosts fire-type moves and weakens water-type moves."
+    }
+  }
+}

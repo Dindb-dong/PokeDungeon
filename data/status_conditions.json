@@ -1,0 +1,17 @@
+{
+  "status_conditions": {
+    "burn": {
+      "effect": "Physical attack is halved.",
+      "damage_per_turn": 0
+    },
+    "paralysis": {
+      "effect": "May be unable to act for 2-5 turns.",
+      "damage_per_turn": 0
+    },
+    "poison": {
+      "effect": "Loses 3 HP every 5 actions.",
+      "damage_per_turn": 3,
+      "action_interval": 5
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "friend_areas": [
+    {
+      "id": 1,
+      "name": "Volcano Area",
+      "pokemons": [4, 5, 6],
+      "shop_price": 6000
+    }
+  ]
+}

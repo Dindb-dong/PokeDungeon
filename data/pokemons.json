@@ -1,0 +1,26 @@
+{
+  "pokemons": [
+    {
+      "id": 1,
+      "name": "Bulbasaur",
+      "types": ["grass", "poison"],
+      "abilities": ["Overgrow"],
+      "base_stats": {
+        "hp": 45,
+        "attack": 49,
+        "defense": 49,
+        "special_attack": 65,
+        "special_defense": 65,
+        "speed": 45
+      },
+      "moves": [
+        {"level": 1, "move": "Tackle"},
+        {"level": 3, "move": "Growl"},
+        {"level": 7, "move": "Leech Seed"}
+      ],
+      "evolutions": [
+        {"level": 16, "to": "Ivysaur"}
+      ]
+    }
+  ]
+}

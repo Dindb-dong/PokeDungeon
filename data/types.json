@@ -1,0 +1,19 @@
+{
+  "types": {
+    "fire": {
+      "super_effective": ["grass", "bug", "ice"],
+      "not_very_effective": ["water", "fire", "rock", "dragon"],
+      "immune": []
+    },
+    "water": {
+      "super_effective": ["fire", "rock", "ground"],
+      "not_very_effective": ["water", "grass", "dragon"],
+      "immune": []
+    },
+    "grass": {
+      "super_effective": ["water", "rock", "ground"],
+      "not_very_effective": ["fire", "grass", "bug", "poison", "flying", "dragon", "steel"],
+      "immune": []
+    }
+  }
+}

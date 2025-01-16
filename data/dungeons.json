@@ -1,0 +1,15 @@
+{
+  "dungeons": [
+    {
+      "id": 1,
+      "name": "Mystery Cave",
+      "max_floors": 15,
+      "wild_pokemons": {
+        "1-5": [{"id": 15, "min_level": 10, "max_level": 12}],
+        "6-10": [{"id": 239, "min_level": 15, "max_level": 17}]
+      },
+      "items": ["Potion", "Elixir"],
+      "weather": ["rain", "sunny"]
+    }
+  ]
+}
