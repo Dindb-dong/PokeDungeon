@@ -10,7 +10,7 @@ export type PokemonInfo = {
   pid: string; // 652-0-1-1: 수컷 이로치 숨특
   types: string[]; // ['불','물']
   moves: MoveInfo[];
-  sex: 'male' | 'female';
+  sex: 'male' | 'female' | null;
   ability: AbilityInfo[];
   attack: number;
   spAttack: number;

@@ -21,11 +21,11 @@ export class RankManager {
   }
 
   // Update state with clamping
-  // TODO: 이거 올리거나 내리는거도 추가하기: 무엇을, 올릴지 내릴지, 얼마나 할지. 
   updateState(newState: Partial<RankState>) {
     this.state = this.clampState({ ...this.state, ...newState });
   }
 
+  // 상승 
   increaseState(
     whichState: keyof RankState,
     rank: number
@@ -34,6 +34,21 @@ export class RankManager {
     const updatedState = {
       ...this.state,
       [whichState]: this.state[whichState] + rank,
+    };
+
+    // 업데이트된 state를 clamping 처리 후 저장
+    this.state = this.clampState(updatedState);
+  }
+
+  // 하락 
+  decreaseState(
+    whichState: keyof RankState,
+    rank: number
+  ): void {
+    // 현재 state의 값을 업데이트
+    const updatedState = {
+      ...this.state,
+      [whichState]: this.state[whichState] - rank,
     };
 
     // 업데이트된 state를 clamping 처리 후 저장
