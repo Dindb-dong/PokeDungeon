@@ -158,7 +158,7 @@ async function calculateMoveDamage({
   const durability = defenseStat * opponentPokemon.hp * opponentPokemon.level * 0.00822;
 
   // 결정력 계산
-  const effectiveness = attackStat * power * rate * types;
+  const effectiveness = (attackStat * 1.3) * (power * 0.7) * rate * types;
 
   // 최종 데미지 계산 (내구력 비율 기반)
   const damage = Math.round((effectiveness / durability) * opponentPokemon.hp); // 소수점 반올림 
