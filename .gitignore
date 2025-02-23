@@ -1,2 +1,16 @@
+# Node.js dependencies
 node_modules
+
+# macOS system file
 .DS_Store
+
+# Environment variables
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+
+# Build output
+dist/
+.vite/

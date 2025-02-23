@@ -3,6 +3,8 @@ import Menu from './components/Menu';
 import DungeonScene from './scenes/DungeonScene';
 import TeamSelectionScene from './scenes/TeamSelectionScene';
 import { useTab } from './context/TabContext';
+import MyPage from './components/MyPage';
+import SignUp from './components/SignUp';
 
 const App: React.FC = () => {
 
@@ -18,6 +20,10 @@ const App: React.FC = () => {
       //   return <BattleScene />;
       case '팀 선택':
         return <TeamSelectionScene />;
+      case '마이페이지':
+        return <MyPage />;
+      case '회원가입':
+        return <SignUp />;
       default:
         return <DungeonScene />;
     }
