@@ -25,12 +25,12 @@ const DungeonScene: React.FC = () => {
   }, []);
 
   return (
-    <div style={{ flex: 5, height: '90%', padding: '10px', backgroundColor: '#E9D5FF' }}>
+    <div style={{ flex: 5, height: '100%', padding: '10px', backgroundColor: '#E9D5FF' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', backgroundColor: '#D8B4FE', padding: '10px' }}>
         <div>팀 상태: 아이콘, 이름, 레벨, 체력, 상태이상, 지닌 도구</div>
         <div>로그: ~~에게 데미지를 입혔다! / ~~는 쓰러졌다! / ~~는 동료가 되기를 원한다!</div>
       </div>
-      <div ref={gameContainer} style={{ width: '100%', height: '100%' }} />  {/* Phaser 게임 출력 */}
+      <div ref={gameContainer} style={{ width: '100%', height: '90%' }} />  {/* Phaser 게임 출력 */}
     </div>
   );
 };
