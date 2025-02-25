@@ -39,6 +39,7 @@ const LogIn: React.FC = () => {
       return;
     }
     setLoading(true);
+    console.log('로그인 시도:', email);
     try {
       const response = await fetch(`${apiUrl}/api/auth/login`, {
         method: 'POST',
@@ -48,6 +49,7 @@ const LogIn: React.FC = () => {
 
       if (response.ok) {
         const data = await response.json();
+        console.log(data);
         localStorage.setItem('token', data.token); // JWT 토큰 저장
         login();
         setActiveTab('마이페이지');
@@ -55,6 +57,7 @@ const LogIn: React.FC = () => {
 
       } else {
         const data = await response.json();
+        console.log(data);
         alert(data.message || '회원가입에 실패했습니다.');
       }
     } catch (error) {
