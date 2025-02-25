@@ -54,6 +54,7 @@ const LogIn: React.FC = () => {
         login();
         setActiveTab('마이페이지');
         navigate('/mypage');
+        console.log('마이페이지로 이동합니다.');
 
       } else {
         const data = await response.json();
@@ -62,6 +63,8 @@ const LogIn: React.FC = () => {
       }
     } catch (error) {
       alert('서버와의 연결에 문제가 발생했습니다.');
+    } finally {
+      setLoading(false);
     }
   };
 
