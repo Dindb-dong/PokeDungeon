@@ -16,18 +16,16 @@ const App: React.FC = () => {
   };
 
   return (
-    <Router>
-      <div style={appStyle}>
-        <Menu />
-        <Routes>
-          <Route path="/" element={<DungeonScene />} />
-          <Route path="/team-selection" element={<TeamSelectionScene />} />
-          <Route path="/my-page" element={<MyPage />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/login" element={<LogIn />} />
-        </Routes>
-      </div>
-    </Router>
+    <div style={appStyle}>
+      <Menu />
+      <Routes>
+        <Route path="/" element={<DungeonScene />} />
+        <Route path="/team-selection" element={<TeamSelectionScene />} />
+        <Route path="/my-page" element={<MyPage />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/login" element={<LogIn />} />
+      </Routes>
+    </div>
   );
 };
 

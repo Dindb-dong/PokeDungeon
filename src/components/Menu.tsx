@@ -4,15 +4,12 @@ import styled from 'styled-components';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
-interface ButtonProps {
-  activeTab?: boolean;
-}
 
-const Button = styled.button<ButtonProps>`
+const Button = styled.button<{ $activetab?: boolean }>`
   margin-bottom: 16px;
   padding: 8px;
   width: 100%;
-  background-color: ${props => (props.activeTab ? '#8C65FFFF' : '#C084FC')};
+  background-color: ${props => (props.$activetab ? '#8C65FFFF' : '#C084FC')};
   border-radius: 8px;
   border: none;
   cursor: pointer;
@@ -31,7 +28,7 @@ const Button = styled.button<ButtonProps>`
 `;
 
 const Menu: React.FC = () => {
-  const { activeTab, setActiveTab } = useTab();
+  const { activetab, setActiveTab } = useTab();
   const { isLoggedIn, logout } = useAuth();
   const navigate = useNavigate();
 
@@ -53,21 +50,21 @@ const Menu: React.FC = () => {
   return (
     <div style={menuStyle}>
       <nav>
-        <Button activeTab={activeTab === '경매장'} onClick={() => handleClick('경매장', '/')}>🌐 경매장</Button>
-        <Button activeTab={activeTab === '커뮤니티'} onClick={() => handleClick('커뮤니티', '/')}>🧑‍🧑‍🧒‍🧒 커뮤니티</Button>
-        <Button activeTab={activeTab === '배틀'} onClick={() => handleClick('배틀', '/')}>🆚 배틀</Button>
-        <Button activeTab={activeTab === '트레저타운'} onClick={() => handleClick('트레저타운', '/')}>🏘️ 트레저타운</Button>
-        <Button activeTab={activeTab === '프렌드에리어'} onClick={() => handleClick('프렌드에리어', '/')}>🎡 프렌드에리어</Button>
-        <Button activeTab={activeTab === '팀 선택'} onClick={() => handleClick('팀 선택', '/team-selection')}>⚔️ 팀 선택</Button>
-        <Button activeTab={activeTab === '탐험'} onClick={() => handleClick('탐험', '/')}>🗺️ 탐험</Button>
-        <Button activeTab={activeTab === '마이페이지'} onClick={() => handleClick('마이페이지', '/my-page')}>🧑‍💼 마이페이지</Button>
+        <Button $activetab={activetab === '경매장'} onClick={() => handleClick('경매장', '/')}>🌐 경매장</Button>
+        <Button $activetab={activetab === '커뮤니티'} onClick={() => handleClick('커뮤니티', '/')}>🧑‍🧑‍🧒‍🧒 커뮤니티</Button>
+        <Button $activetab={activetab === '배틀'} onClick={() => handleClick('배틀', '/')}>🆚 배틀</Button>
+        <Button $activetab={activetab === '트레저타운'} onClick={() => handleClick('트레저타운', '/')}>🏘️ 트레저타운</Button>
+        <Button $activetab={activetab === '프렌드에리어'} onClick={() => handleClick('프렌드에리어', '/')}>🎡 프렌드에리어</Button>
+        <Button $activetab={activetab === '팀 선택'} onClick={() => handleClick('팀 선택', '/team-selection')}>⚔️ 팀 선택</Button>
+        <Button $activetab={activetab === '탐험'} onClick={() => handleClick('탐험', '/')}>🗺️ 탐험</Button>
+        <Button $activetab={activetab === '마이페이지'} onClick={() => handleClick('마이페이지', '/my-page')}>🧑‍💼 마이페이지</Button>
 
         {isLoggedIn ? (
           <Button onClick={logout}>🚪 로그아웃</Button>
         ) : (
           <>
-            <Button activeTab={activeTab === '로그인'} onClick={() => handleClick('로그인', '/login')}>🔑 로그인</Button>
-            <Button activeTab={activeTab === '회원가입'} onClick={() => handleClick('회원가입', '/signup')}>📝 회원가입</Button>
+            <Button $activetab={activetab === '로그인'} onClick={() => handleClick('로그인', '/login')}>🔑 로그인</Button>
+            <Button $activetab={activetab === '회원가입'} onClick={() => handleClick('회원가입', '/signup')}>📝 회원가입</Button>
           </>
         )}
       </nav>
