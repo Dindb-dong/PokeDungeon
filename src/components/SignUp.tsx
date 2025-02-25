@@ -3,11 +3,34 @@ import { useAuth } from '../context/AuthContext';
 import { useTab } from '../context/TabContext';
 import { getUserRegionByIP } from '../utils/locationUtils';
 import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
 const apiUrl = import.meta.env.VITE_API_URL;
 
 interface PasswordValidatorProps {
   password: string;
 }
+
+const Button = styled.button`
+  margin-bottom: 16px;
+  padding: 8px;
+  width: 100%;
+  background-color: '#C084FC';
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  flex: 1;
+  transition: transform 0.1s, box-shadow 0.1s;
+
+  &:active {
+    transform: scale(0.90);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  &:hover {
+    background-color: #a276ff;
+  }
+`;
 
 const PasswordValidator: React.FC<PasswordValidatorProps> = ({ password }) => {
   const A = /[0-9]/.test(password); // 숫자 조건
@@ -43,8 +66,8 @@ const SignUp: React.FC = () => {
   const [isPasswordValid, setIsPasswordValid] = useState(true);
   const [isEmailValid, setIsEmailValid] = useState(true);
   const [region, setRegion] = useState<string>(''); // ✅ 사용자의 지역 정보
-  const { login } = useAuth();
   const { setActiveTab } = useTab();
+  const navigate = useNavigate(); // ✅ 함수 외부에서 호출
 
   const checkPassWord = (password: string): boolean => {
     const regex = /^(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d@$!%*?&]{8,}$/;
@@ -52,7 +75,6 @@ const SignUp: React.FC = () => {
   };
 
   const handleSignUp = async () => {
-    const navigate = useNavigate();
     if (!email || !password || !confirmPassword) {
       alert('모든 항목을 입력하세요.');
       return;
@@ -74,12 +96,14 @@ const SignUp: React.FC = () => {
     setLoading(true);
     const userRegion = await getUserRegionByIP();
     setRegion(userRegion); // 가져온 지역을 상태로 저장
+    console.log(region);
     try {
       const response = await fetch(`${apiUrl}/api/auth/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password, region })
       });
+      console.log(response);
 
       if (response.ok) {
         alert('회원가입이 완료되었습니다. 이메일을 확인해 주세요.');
@@ -198,7 +222,7 @@ const SignUp: React.FC = () => {
         </div>
 
         {/* 회원가입 버튼 */}
-        <button
+        <Button
           onClick={handleSignUp}
           style={{
             padding: '12px',
@@ -214,7 +238,7 @@ const SignUp: React.FC = () => {
           }}
         >
           {loading ? '가입 중...' : '회원가입'}
-        </button>
+        </Button>
       </div>
     </div>
   );

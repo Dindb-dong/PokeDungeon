@@ -1,17 +1,17 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
 interface TabContextType {
-  activeTab: string;
+  activetab: string;
   setActiveTab: (tab: string) => void;
 }
 
 const TabContext = createContext<TabContextType | undefined>(undefined);
 
 export const TabProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [activeTab, setActiveTab] = useState('트레저타운');
+  const [activetab, setActiveTab] = useState('트레저타운');
 
   return (
-    <TabContext.Provider value={{ activeTab, setActiveTab }}>
+    <TabContext.Provider value={{ activetab, setActiveTab }}>
       {children}
     </TabContext.Provider>
   );

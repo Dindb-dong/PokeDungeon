@@ -1,12 +1,34 @@
 import { useAuth } from "@/context/AuthContext";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 const apiUrl = import.meta.env.VITE_API_URL;
 
-const LogIn: React.FC = () => {
+const Button = styled.button`
+  margin-bottom: 16px;
+  padding: 8px;
+  width: 100%;
+  background-color: '#C084FC';
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  flex: 1;
+  transition: transform 0.1s, box-shadow 0.1s;
 
+  &:active {
+    transform: scale(0.90);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  &:hover {
+    background-color: #a276ff;
+  }
+`;
+
+const LogIn: React.FC = () => {
+  const navigate = useNavigate(); // ✅ 함수 외부에서 호출
   const handleLogin = async () => {
-    const navigate = useNavigate();
     if (!email || !password) {
       alert('모든 항목을 입력하세요.');
       return;
@@ -97,7 +119,7 @@ const LogIn: React.FC = () => {
         </div>
 
         {/* 로그인 버튼 */}
-        <button
+        <Button
           onClick={handleLogin}
           style={{
             padding: '12px',
@@ -113,7 +135,7 @@ const LogIn: React.FC = () => {
           }}
         >
           {loading ? '로그인 중...' : '로그인'}
-        </button>
+        </Button>
       </div>
     </div>
   )
