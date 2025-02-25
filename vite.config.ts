@@ -5,6 +5,7 @@ import path from 'path';
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
+  base: '/', // ✅ 기본 경로를 루트로 설정
   resolve: {
     alias: {
       '@': path.resolve(__dirname, 'src')
