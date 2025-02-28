@@ -47,21 +47,20 @@ const LogIn: React.FC = () => {
         body: JSON.stringify({ email, password })
       });
 
-      if (!response.ok) {
+      if (response.status === 200) {
+        const data = await response.json();
+        console.log('로그인 성공:', data);
+        localStorage.setItem('token', data.token);
+        login();
+        setActiveTab('마이페이지');
+        navigate('/mypage');
+        console.log('마이페이지로 이동합니다.');
+      } else {
         const text = await response.text(); // JSON 파싱 실패 방지
         console.error('서버 응답 오류:', text);
         alert('로그인 실패: ' + text);
         return;
       }
-
-      const data = await response.json();
-      console.log('로그인 성공:', data);
-      localStorage.setItem('token', data.token);
-      login();
-      setActiveTab('마이페이지');
-      navigate('/mypage');
-      console.log('마이페이지로 이동합니다.');
-
     } catch (error) {
       console.error('로그인 중 에러 발생:', error);
       alert('서버와의 연결에 문제가 발생했습니다.');
