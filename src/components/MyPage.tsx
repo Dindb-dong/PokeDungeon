@@ -75,7 +75,10 @@ const MyPage: React.FC = () => {
               <button onClick={() => setPasswordModalOpen(true)} style={{ ...buttonStyle, marginLeft: '10px' }}>비밀번호 변경</button>
             </>
           ) : (
-            <p>사용자 정보를 불러오는 중...</p>
+            <div>
+              <p>사용자 정보를 불러오는 중...</p>
+              <p> 새로고침하지 마시고 잠시만 기다려주세요.</p>
+            </div>
           )}
         </div>
       ) : (

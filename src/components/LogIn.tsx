@@ -141,7 +141,7 @@ const LogIn: React.FC = () => {
             opacity: loading ? 0.7 : 1
           }}
         >
-          {loading ? '로그인 중...' : '로그인'}
+          {loading ? '로그인 중... \n 새로고침하지 마시고 잠시만 기다려주세요.' : '로그인'}
         </Button>
       </div>
     </div>

@@ -239,7 +239,7 @@ const SignUp: React.FC = () => {
             opacity: loading ? 0.7 : 1
           }}
         >
-          {loading ? '가입 중...' : '회원가입'}
+          {loading ? '가입 중... \n 새로고침하지 마시고 잠시만 기다려주세요.' : '회원가입'}
         </Button>
       </div>
     </div>
