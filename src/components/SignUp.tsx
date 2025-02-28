@@ -65,7 +65,6 @@ const SignUp: React.FC = () => {
   const [isPasswordMatch, setIsPasswordMatch] = useState(true);
   const [isPasswordValid, setIsPasswordValid] = useState(true);
   const [isEmailValid, setIsEmailValid] = useState(true);
-  const [region, setRegion] = useState<string>(''); // ✅ 사용자의 지역 정보
   const { setActiveTab } = useTab();
   const navigate = useNavigate(); // ✅ 함수 외부에서 호출
 
@@ -94,13 +93,15 @@ const SignUp: React.FC = () => {
       return;
     }
     setLoading(true);
-    const userRegion = await getUserRegionByIP();
-    setRegion(userRegion); // 가져온 지역을 상태로 저장
-    console.log(region);
+    const region = await getUserRegionByIP();
+    console.log('회원가입 시 지역:', region);
+    console.log('회원가입 요청 데이터:', { email, password, region });
     try {
       const response = await fetch(`${apiUrl}/api/auth/register`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          "Content-Type": "application/json"
+        },
         body: JSON.stringify({ email, password, region })
       });
       console.log(response);
@@ -112,6 +113,7 @@ const SignUp: React.FC = () => {
       } else {
         const data = await response.json();
         alert(data.message || '회원가입에 실패했습니다.');
+        console.log(data);
       }
     } catch (error) {
       alert('서버와의 연결에 문제가 발생했습니다.');

@@ -40,7 +40,7 @@ const MyPage: React.FC = () => {
         localStorage.removeItem('token');
         return
       };
-      const response = await fetch(`${apiUrl}/api/user/profile`, {
+      const response = await fetch(`${apiUrl}/api/users/profile`, {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`,
